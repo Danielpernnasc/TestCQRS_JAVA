@@ -1,43 +1,48 @@
 package com.Satander.CQRS.user;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-
+@Entity
+@Table(name = "users")
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String fullName;
-    @Column(unique = true) private String cpf;
-    @Column(unique = true) private String email;
+
+    @Column(unique = true, nullable = false)
+    private String cpf;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true, nullable = false)
     private String login;
-    private String password;
 
-    public User(String fullName, String cpf, String login, String password) {
+    @Column(nullable = false)
+    private String passwordHash;
 
+    // 🔹 Construtor vazio obrigatório para JPA
+    public User() {
+    }
+
+    // 🔹 Construtor útil na criação
+    public User(String fullName, String cpf, String login, String passwordHash) {
         this.fullName = fullName;
-
         this.cpf = cpf;
-
         this.login = login;
-
-        this.password = password;
-
+        this.passwordHash = passwordHash;
     }
 
-    public Long getId() { // Added getId method
-
+    // Getters e Setters
+    public Long getId() {
         return id;
-
     }
 
-    public void setId(Long id) { // Optional: Added setId method
-
+    public void setId(Long id) {
         this.id = id;
-
     }
 
     public String getFullName() {
@@ -47,11 +52,21 @@ public class User {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLogin() {
@@ -62,12 +77,11 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
-
 }

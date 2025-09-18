@@ -26,11 +26,11 @@ public class UserService {
         u.setFullName(fullName);
         u.setCpf(cpf);
         u.setLogin(login);
-        u.setPassword(enc.encode(password));
+        u.setPasswordHash(enc.encode(password));
         return repo.save(u).getId();
     }
 
     public boolean check(User u, String raw) {
-        return enc.matches(raw, u.getPassword());
+        return enc.matches(raw, u.getPasswordHash());
     }
 }

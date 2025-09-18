@@ -3,18 +3,36 @@ spring:
     url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
     username: sa
   jpa:
-    hibernate.ddl-auto: update
-  h2.console.enabled: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8080
+
 jwt:
-  secret: change-me
+  # ≥ 32 chars; exemplo seguro p/ HS256:
+  secret: "change-me-please-THIS-IS-AT-LEAST-32-CHARS!!"
   ttlHours: 6
-server.port: 8080
 ---
 spring:
-  config.activate.on-profile: redis
-  data.redis.host: localhost
-  data.redis.port: 6379
+  config:
+    activate:
+      on-profile: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
 ---
 spring:
-  config.activate.on-profile: mongo
-  data.mongodb.uri: mongodb://localhost:27017/cqrs
+  config:
+    activate:
+      on-profile: mongo
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/cqrs

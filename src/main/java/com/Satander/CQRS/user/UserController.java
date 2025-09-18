@@ -63,7 +63,7 @@ public ResponseEntity<?> register(@RequestBody RegisterReq r) {
 @PostMapping("/login")
 public ResponseEntity<LoginRes> login(@RequestBody LoginReq r) {
     var u = repo.findByLogin(r.login()).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
-    String token = JwtUtil.issue(u.getLogin()); // Generate token using login
+    String token = JwtUtil.issue(u.getLogin(), secret, ttl); // Generate token using login, secret, and TTL
     return ResponseEntity.ok(new LoginRes(token));
 }
    
