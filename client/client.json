@@ -1,0 +1,10 @@
+{
+    "SaldoTotal": "xx.xx",
+    "Historico": [
+        {
+            "type": "saque",
+            "valor": "x.xx",
+            "data": "dd-MM-yyyy HH:mm:ss"
+        }
+    ]
+}
