@@ -10,10 +10,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-import com.Satander.CQRS.CpfValidator;
 import com.Satander.CQRS.Db;
 import com.Satander.CQRS.HttpUtil;
-import com.Satander.CQRS.JwtUtil;
+import com.Satander.CQRS.common.CpfValidator;
+import com.Satander.CQRS.security.JwtUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 // Removed unused or unresolved import
 

@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import com.Satander.CQRS.Db;
 import com.Satander.CQRS.HttpUtil;
-import com.Satander.CQRS.JwtUtil;
+import com.Satander.CQRS.security.JwtUtil;
 import com.sun.net.httpserver.HttpExchange;
 import java.math.BigDecimal;
 import java.sql.Timestamp;

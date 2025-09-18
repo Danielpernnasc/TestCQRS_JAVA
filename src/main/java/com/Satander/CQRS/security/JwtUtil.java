@@ -1,4 +1,4 @@
-package com.Satander.CQRS;
+package com.Satander.CQRS.security;
 
 import java.sql.Date;
 
@@ -6,6 +6,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 
 
@@ -28,12 +29,20 @@ public class JwtUtil {
                 .sign(ALG);
     }
 
+    public static DecodedJWT parse(String token, String secret){
+        Algorithm alg = Algorithm.HMAC256(secret);
+        return JWT.require(alg)
+                .withIssuer(ISSUER)
+                .build()
+                .verify(token);
+    }
+
     public static String subject(String token) {
         try {
             JWTVerifier verifier = JWT.require(ALG).withIssuer(ISSUER).build();
             return verifier.verify(token).getSubject();
         } catch (JWTVerificationException e) {
-            return null; // ou lançar exceção customizada
+            return null; 
         }
     }
 
