@@ -26,7 +26,7 @@ public class UserService {
         u.setFullName(fullName);
         u.setCpf(cpf);
         u.setLogin(login);
-        u.setPassword(enc.encode(password));
+        u.setPasswordHash(enc.encode(password));
         return repo.save(u).getId();
     }
 
