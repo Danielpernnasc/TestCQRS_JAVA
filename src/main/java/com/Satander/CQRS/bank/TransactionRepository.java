@@ -1,7 +1,8 @@
 package com.Satander.CQRS.bank;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.Satander.CQRS.bank.Transaction; // Ensure this import matches the actual location of the Transaction class
+import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, String> {
+    List<Transaction> findByAccountIdOrderByCreatedAtDesc(String accountId);
 }

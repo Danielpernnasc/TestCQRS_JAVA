@@ -1,7 +1,8 @@
 package com.Satander.CQRS.bank;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,8 +22,11 @@ public class TransactionService {
         var acc = accounts.findById(accountId).orElse(new Account(accountId));
         BigDecimal balance = acc.getBalance();
 
-        if (type == TransactionType.CREDIT) {
+        amount = amount.setScale(2, RoundingMode.HALF_UP);
+
+        if (type == TransactionType.CREDIT) { // Depósito
             if (balance.compareTo(BigDecimal.ZERO) < 0) {
+                // Aplica juros de 2% sobre a dívida
                 BigDecimal debt = balance.abs().multiply(new BigDecimal("1.02")).setScale(2, RoundingMode.HALF_UP);
                 if (amount.compareTo(debt) >= 0) {
                     balance = amount.subtract(debt);
@@ -32,7 +36,7 @@ public class TransactionService {
             } else {
                 balance = balance.add(amount);
             }
-        } else {
+        } else { // DEBIT (pagamento de conta)
             balance = balance.subtract(amount);
         }
 

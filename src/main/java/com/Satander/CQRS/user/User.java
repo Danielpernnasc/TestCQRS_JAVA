@@ -3,9 +3,8 @@ package com.Satander.CQRS.user;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "app_user")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,20 +14,15 @@ public class User {
     @Column(unique = true, nullable = false)
     private String cpf;
 
-    @Column(unique = true)
-    private String email;
-
     @Column(unique = true, nullable = false)
     private String login;
 
     @Column(nullable = false)
     private String passwordHash;
 
-    // 🔹 Construtor vazio obrigatório para JPA
     public User() {
     }
 
-    // 🔹 Construtor útil na criação
     public User(String fullName, String cpf, String login, String passwordHash) {
         this.fullName = fullName;
         this.cpf = cpf;
@@ -36,7 +30,6 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -49,39 +42,31 @@ public class User {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullName(String v) {
+        this.fullName = v;
     }
 
     public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCpf(String v) {
+        this.cpf = v;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setLogin(String v) {
+        this.login = v;
     }
 
     public String getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPasswordHash(String v) {
+        this.passwordHash = v;
     }
 }

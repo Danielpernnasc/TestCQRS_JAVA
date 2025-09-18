@@ -5,8 +5,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate.format_sql: true
   h2:
     console:
       enabled: true
@@ -16,23 +14,5 @@ server:
   port: 8080
 
 jwt:
-  # ≥ 32 chars; exemplo seguro p/ HS256:
   secret: "change-me-please-THIS-IS-AT-LEAST-32-CHARS!!"
   ttlHours: 6
----
-spring:
-  config:
-    activate:
-      on-profile: redis
-  data:
-    redis:
-      host: localhost
-      port: 6379
----
-spring:
-  config:
-    activate:
-      on-profile: mongo
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/cqrs

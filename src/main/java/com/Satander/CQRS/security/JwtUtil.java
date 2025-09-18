@@ -2,7 +2,6 @@ package com.Satander.CQRS.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-
 import javax.crypto.SecretKey;
 import java.util.Date;
 

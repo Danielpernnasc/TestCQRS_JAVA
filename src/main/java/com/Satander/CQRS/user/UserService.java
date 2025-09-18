@@ -1,11 +1,9 @@
+
 package com.Satander.CQRS.user;
 
-
+import com.Satander.CQRS.common.CpfValidator;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.Satander.CQRS.common.CpfValidator;
-
 
 @Service
 public class UserService {
@@ -17,16 +15,12 @@ public class UserService {
         this.enc = e;
     }
 
-    public Long register(String fullName, String cpf, String login, String password) {
+    public Long register(String fullName, String cpf, String login, String raw) {
         if (!CpfValidator.isValid(cpf))
             throw new IllegalArgumentException("CPF inválido");
         if (repo.existsByLogin(login) || repo.existsByCpf(cpf))
             throw new IllegalStateException("Login/CPF já cadastrado");
-        var u = new User(fullName, cpf, login, password);
-        u.setFullName(fullName);
-        u.setCpf(cpf);
-        u.setLogin(login);
-        u.setPasswordHash(enc.encode(password));
+        var u = new User(fullName, cpf, login, enc.encode(raw));
         return repo.save(u).getId();
     }
 
