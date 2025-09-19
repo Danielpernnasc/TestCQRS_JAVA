@@ -1,42 +1,40 @@
-
 package com.Satander.CQRS.user;
 
 import com.Satander.CQRS.common.CpfValidator;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+// com/Satander/CQRS/user/UserService.java
 @Service
 public class UserService {
-    private final UserRepository repo;
-    private final PasswordEncoder enc;
+  private final UserRepository repo;
+  private final PasswordEncoder enc;
 
-    public UserService(UserRepository r, PasswordEncoder e) {
-        this.repo = r;
-        this.enc = e;
-    }
+  public UserService(UserRepository r, PasswordEncoder e) { this.repo = r; this.enc = e; }
+  
+  public boolean check(User user, String rawPassword) {
+      return enc.matches(rawPassword, user.getPasswordHash());
+  }
 
-    public Long register(String fullName, String cpf, String login, String raw) {
-        if (!CpfValidator.isValid(cpf))
-            throw new IllegalArgumentException("CPF inválido");
-        if (repo.existsByLogin(login) || repo.existsByCpf(cpf))
-            throw new IllegalStateException("Login/CPF já cadastrado");
-        var u = new User(fullName, cpf, login, enc.encode(raw));
-        return repo.save(u).getId();
-    }
+  @Transactional
+  public Long register(String fullName, String cpf, String login, String rawPassword) {
+    String cpfLimpo = cpf.replaceAll("\\D", "");         // só dígitos
+    if (!CpfValidator.isValid(cpfLimpo))                 // <-- valida DV
+      throw new IllegalArgumentException("CPF inválido");
+    if (repo.existsByLogin(login)) throw new IllegalStateException("Login já cadastrado");
+    if (repo.existsByCpf(cpfLimpo)) throw new IllegalStateException("CPF já cadastrado");
 
-    public User create(String fullName, String cpf, String login, String password) {
+    var u = new User(fullName, cpfLimpo, login, enc.encode(rawPassword));
+    return repo.save(u).getId();
+  }
 
-        // Implement the logic to create a new user
-
-        User user = new User(fullName, cpf, login, password);
-
-        // Save the user to the repository or perform other necessary actions
-
-        return user;
-
-    }
-
-    public boolean check(User u, String raw) {
-        return enc.matches(raw, u.getPasswordHash());
-    }
+  // (opcional) se ainda existir:
+  @Transactional
+  public User create(String fullName, String cpf, String login, String rawPassword) {
+    Long id = register(fullName, cpf, login, rawPassword);   // delega para register (com validação)
+    return repo.findById(id).orElseThrow();
+  }
 }
+
+

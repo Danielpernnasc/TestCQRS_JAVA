@@ -11,8 +11,8 @@ public class User {
 
     private String fullName;
 
-    @Column(unique = true, nullable = false)
-    private String cpf;
+    @Column(unique = true, nullable = false, length = 11)
+    private String cpf; // sempre armazenar só dígitos (sem . ou -)
 
     @Column(unique = true, nullable = false)
     private String login;
@@ -29,7 +29,7 @@ public class User {
         this.login = login;
         this.passwordHash = passwordHash;
     }
-
+    
     public Long getId() {
         return id;
     }

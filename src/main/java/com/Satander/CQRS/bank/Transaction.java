@@ -1,51 +1,74 @@
 package com.Satander.CQRS.bank;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 @Entity
+@Table(name = "bank_tx")
 public class Transaction {
     @Id
-    private String id;
-    private String accountId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 16)
+    private TransactionType type;
+
+    @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
-    private String type;
-    private Instant createdAt;
 
-   
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal balanceAfter;
 
+    @Column(nullable = false)
+    private LocalDateTime timestamp;
 
-
-    public Transaction(String accountId, BigDecimal amount, TransactionType type) {
-        this.id = UUID.randomUUID().toString();
-        this.accountId = accountId;
-        this.amount = amount.setScale(2);
-        this.type = type.name();
-        this.createdAt = Instant.now();
-    }
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
     }
 
     public BigDecimal getAmount() {
         return amount;
     }
 
-    public String getType() {
-        return type;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public BigDecimal getBalanceAfter() {
+        return balanceAfter;
+    }
+
+    public void setBalanceAfter(BigDecimal balanceAfter) {
+        this.balanceAfter = balanceAfter;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }
