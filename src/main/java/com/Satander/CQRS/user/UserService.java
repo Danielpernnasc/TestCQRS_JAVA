@@ -24,6 +24,18 @@ public class UserService {
         return repo.save(u).getId();
     }
 
+    public User create(String fullName, String cpf, String login, String password) {
+
+        // Implement the logic to create a new user
+
+        User user = new User(fullName, cpf, login, password);
+
+        // Save the user to the repository or perform other necessary actions
+
+        return user;
+
+    }
+
     public boolean check(User u, String raw) {
         return enc.matches(raw, u.getPasswordHash());
     }
