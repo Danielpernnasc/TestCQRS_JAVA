@@ -1,4 +1,4 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;

@@ -1,9 +1,10 @@
-package com.Satander.CQRS.user;
+package com.Santander.CQRS.user;
 
-import com.Satander.CQRS.common.CpfValidator;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.Santander.CQRS.common.CpfValidator;
 
 // com/Satander/CQRS/user/UserService.java
 @Service

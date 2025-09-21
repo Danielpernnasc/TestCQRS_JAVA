@@ -1,8 +1,10 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
+import com.Santander.CQRS.bank.Account; // Ensure this is the correct package for the Account class
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+ // Ensure this is the correct package for the Account class
 
 @Entity
 @Table(name = "bank_tx")

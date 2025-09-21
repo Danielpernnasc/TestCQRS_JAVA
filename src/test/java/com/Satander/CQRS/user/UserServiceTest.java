@@ -1,10 +1,14 @@
 package com.Satander.CQRS.user;
 
-import com.Satander.CQRS.common.CpfValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.Santander.CQRS.common.CpfValidator;
+import com.Santander.CQRS.user.User;
+import com.Santander.CQRS.user.UserRepository;
+import com.Santander.CQRS.user.UserService;
 
 import java.util.Optional;
 

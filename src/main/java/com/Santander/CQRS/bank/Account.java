@@ -1,9 +1,10 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
-import com.Satander.CQRS.user.User;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import com.Santander.CQRS.user.User;
 
 @Entity
 @Table(name = "account")

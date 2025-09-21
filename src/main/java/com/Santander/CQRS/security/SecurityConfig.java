@@ -1,4 +1,4 @@
-package com.Satander.CQRS.security;
+package com.Santander.CQRS.security;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;

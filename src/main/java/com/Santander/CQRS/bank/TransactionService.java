@@ -1,9 +1,10 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
-import com.Satander.CQRS.user.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import com.Santander.CQRS.user.UserRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

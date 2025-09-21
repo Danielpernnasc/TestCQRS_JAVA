@@ -1,4 +1,4 @@
-package com.Satander.CQRS.common;
+package com.Santander.CQRS.common;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;

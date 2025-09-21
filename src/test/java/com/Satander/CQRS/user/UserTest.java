@@ -1,6 +1,9 @@
 package com.Satander.CQRS.user;
 
 import org.junit.jupiter.api.Test;
+
+import com.Santander.CQRS.user.User;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserTest {

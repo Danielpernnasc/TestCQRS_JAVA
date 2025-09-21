@@ -1,7 +1,5 @@
 package com.Satander.CQRS.bank;
 
-import com.Satander.CQRS.user.User;
-import com.Satander.CQRS.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +10,17 @@ import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.Santander.CQRS.bank.Account;
+import com.Santander.CQRS.bank.AccountRepository;
+import com.Santander.CQRS.bank.BankController;
+import com.Santander.CQRS.bank.ReadModelCache;
+import com.Santander.CQRS.bank.Transaction;
+import com.Santander.CQRS.bank.TransactionRepository;
+import com.Santander.CQRS.bank.TransactionService;
+import com.Santander.CQRS.bank.TransactionType;
+import com.Santander.CQRS.user.User;
+import com.Santander.CQRS.user.UserRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

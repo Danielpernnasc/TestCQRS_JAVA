@@ -1,6 +1,9 @@
 package com.Satander.CQRS.common;
 
 import org.junit.jupiter.api.Test;
+
+import com.Santander.CQRS.common.CpfValidator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CpfValidatorTest {

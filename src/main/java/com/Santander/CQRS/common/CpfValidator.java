@@ -1,4 +1,4 @@
-package com.Satander.CQRS.common;
+package com.Santander.CQRS.common;
 
 public final class CpfValidator {
     private CpfValidator() {

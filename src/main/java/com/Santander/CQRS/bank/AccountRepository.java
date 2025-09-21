@@ -1,7 +1,9 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
-import com.Satander.CQRS.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.Santander.CQRS.user.User;
+
 import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {

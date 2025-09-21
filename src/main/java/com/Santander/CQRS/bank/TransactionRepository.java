@@ -1,4 +1,4 @@
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;

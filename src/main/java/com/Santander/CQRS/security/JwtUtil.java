@@ -1,4 +1,4 @@
-package com.Satander.CQRS.security;
+package com.Santander.CQRS.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

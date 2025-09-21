@@ -1,4 +1,4 @@
-package com.Satander.CQRS.user;
+package com.Santander.CQRS.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

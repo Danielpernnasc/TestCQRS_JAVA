@@ -1,6 +1,8 @@
  
  # Run project 
- mvn clean spring-boot:run ou mvn spring-boot-run
+ mvn clean spring-boot:run ou mvn spring-boot:run
+
+ utilize o bash para testar
 
  # Registro Cliente
  curl -i -X POST http://localhost:8080/users/register \

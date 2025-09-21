@@ -1,5 +1,5 @@
 
-package com.Satander.CQRS.bank;
+package com.Santander.CQRS.bank;
 
 
 public enum TransactionType {

@@ -11,6 +11,11 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.Santander.CQRS.user.User;
+import com.Santander.CQRS.user.UserController;
+import com.Santander.CQRS.user.UserRepository;
+import com.Santander.CQRS.user.UserService;
+
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;

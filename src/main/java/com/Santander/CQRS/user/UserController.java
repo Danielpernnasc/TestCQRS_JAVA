@@ -1,4 +1,4 @@
-package com.Satander.CQRS.user;
+package com.Santander.CQRS.user;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.Satander.CQRS.security.JwtUtil;
+import com.Santander.CQRS.security.JwtUtil;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

@@ -1,13 +1,20 @@
 package com.Satander.CQRS.bank;
 
-import com.Satander.CQRS.user.User;
-import com.Satander.CQRS.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
+
+import com.Santander.CQRS.bank.Account;
+import com.Santander.CQRS.bank.AccountRepository;
+import com.Santander.CQRS.bank.ReadModelProjector;
+import com.Santander.CQRS.bank.Transaction;
+import com.Santander.CQRS.bank.TransactionRepository;
+import com.Santander.CQRS.bank.TransactionService;
+import com.Santander.CQRS.user.User;
+import com.Santander.CQRS.user.UserRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
