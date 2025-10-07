@@ -140,7 +140,13 @@
 			<artifactId>java-jwt</artifactId>
 			<version>4.4.0</version>
 		</dependency>
-	</dependencies>
+	
+   <dependency>
+     <groupId>com.bloxbean.cardano</groupId>
+     <artifactId>yaci-store-transaction-api</artifactId>
+     <version>0.1.0-rc1</version>
+   </dependency>
+ </dependencies>
 	<build>
 		<plugins>
 			<plugin>
